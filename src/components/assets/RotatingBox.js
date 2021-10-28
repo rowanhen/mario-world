@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useSpring, animated, config } from "@react-spring/three";
+import React from "react";
+import { useFrame } from "@react-three/fiber";
+import { useSpring, animated } from "@react-spring/three";
 
 export function RotatingBox({...props}) {
   const myMesh = React.useRef();
@@ -10,7 +10,6 @@ export function RotatingBox({...props}) {
   const positioningVariable = props.position
 
   const boxActive = props.states.boxAsset
-  const setActive = props.setStates.setBoxAsset
 
   const { scale } = useSpring({
     scale: boxActive ? 1 : 1.5,

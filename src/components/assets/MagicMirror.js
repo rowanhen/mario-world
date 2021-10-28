@@ -1,7 +1,7 @@
 import * as THREE from 'three'
-import React, { useRef, useMemo, useState } from 'react'
-import { Canvas, createPortal, useFrame } from '@react-three/fiber'
-import { PerspectiveCamera, OrbitControls, Plane, TorusKnot, Box  } from '@react-three/drei'
+import React, { useRef, useMemo } from 'react'
+import { createPortal, useFrame } from '@react-three/fiber'
+import { PerspectiveCamera, Plane, TorusKnot  } from '@react-three/drei'
 import { useSpring, animated, config } from "@react-spring/three";
 
 
@@ -19,7 +19,6 @@ function SpinningThing() {
 
 function Cube({...props}) {
   const myMesh = React.useRef();
-  const [active, setActive] = useState(false);
 
   const frameActive = props.states.frameAsset
 

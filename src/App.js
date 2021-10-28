@@ -1,32 +1,22 @@
 import * as THREE from 'three'
 import { Suspense, useRef, useState } from 'react'
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { OrbitControls, CameraShake, Environment, Sky, Stars } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, CameraShake, Environment, Sky } from '@react-three/drei'
 import { EffectComposer, Noise, HueSaturation, Pixelation } from '@react-three/postprocessing'
 import { CastleOutside } from './components/CastleOutside'
 import { CastleInside } from './components/CastleInside'
 import { useLocation, Switch, Route } from "wouter"
 import { Link } from "wouter"
 import { a } from "@react-spring/three"
-import { useTransition, useSpring } from "@react-spring/core"
+import { useTransition } from "@react-spring/core"
 
 
 
 RectAreaLightUniformsLib.init()
 
-function Light() {
-  const ref = useRef()
-  useFrame((_) => (ref.current.rotation.x = _.clock.elapsedTime))
-  return (
-    <group ref={ref}>
-      <rectAreaLight width={15} height={100} position={[30, 30, -10]} intensity={5} onUpdate={(self) => self.lookAt(0, 0, 0)} />
-    </group>
-  )
-}
 
 const PostEffects = (props) => {
-  const { mouse, clock } = useThree()
   return (
     <EffectComposer>
       <Noise opacity={0.19} />
