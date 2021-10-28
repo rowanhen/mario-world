@@ -4,7 +4,6 @@ import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLigh
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls, CameraShake, Environment, Sky, Stars } from '@react-three/drei'
 import { EffectComposer, Noise, HueSaturation, Pixelation } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
 import { CastleOutside } from './components/CastleOutside'
 import { CastleInside } from './components/CastleInside'
 import { useLocation, Switch, Route } from "wouter"
@@ -32,7 +31,6 @@ const PostEffects = (props) => {
     <EffectComposer>
       <Noise opacity={0.19} />
       <HueSaturation
-        blendFunction={BlendFunction.NORMAL} // blend mode
         hue={0} // hue in radians
         saturation={0.3} // saturation in radians
       />
