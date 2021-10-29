@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { Suspense, useRef, useState } from 'react'
+import { Suspense, useRef } from 'react'
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, CameraShake, Environment, Sky } from '@react-three/drei'
@@ -7,7 +7,6 @@ import { EffectComposer, Noise, HueSaturation, Pixelation } from '@react-three/p
 import { CastleOutside } from './components/CastleOutside'
 import { CastleInside } from './components/CastleInside'
 import { useLocation, Switch, Route } from "wouter"
-import { Link } from "wouter"
 import { a } from "@react-spring/three"
 import { useTransition } from "@react-spring/core"
 
@@ -66,7 +65,6 @@ const Scene = ({transition, setLocation}) => {
 export default function App() {
   const ref = useRef()
   const [location, setLocation] = useLocation()
-  const [navMenu, setNavMenu] = useState(false)
 
   const mouseButtons = {
     LEFT: THREE.MOUSE.ROTATE,
