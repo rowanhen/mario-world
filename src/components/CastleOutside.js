@@ -33,7 +33,7 @@ const Wave = ({...props}) => {
 export const CastleOutside = ({setLocation}) => {
     return (
         <>
-          <ShaderPlane position={[0,-5,-22]} scale={[20, 20, 10]} setLocation={setLocation} />
+          <ShaderPlane position={[1,-2,-22]} scale={[12, 10, 10]} setLocation={setLocation} />
           <Wave rotation={[-Math.PI / 2, 0, 0]} position={[0,-15,0]} />
           <CastleOutsideModel scale={[20,20,20]} position={[0,-10,0]} rotation-y={[-Math.PI / 1]} />
         </>
