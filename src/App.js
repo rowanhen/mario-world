@@ -48,9 +48,6 @@ const Lighting = () => {
 }
 
 const NavMenu = ({...props}) => {
-
-  console.log(props.menuProps)
-
   const navMenu = props.menuProps.navMenu 
   const setNavMenu = props.menuProps.setNavMenu
 

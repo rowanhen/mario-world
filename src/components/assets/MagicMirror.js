@@ -23,7 +23,7 @@ function Cube({...props}) {
   const frameActive = props.states.frameAsset
 
   const { rotation } = useSpring({
-    rotation: frameActive ? [-Math.PI / 1, 0, 0] : [-Math.PI / 1, -0.8, 0],
+    rotation: frameActive ? [-Math.PI / 1, 0, 0] : [-Math.PI / 1, -0.7, 0],
     config: { duration: 1000 },
   });
 
@@ -32,14 +32,14 @@ function Cube({...props}) {
     config: config.slow,
   })
 
-  const x = 21;
+  const x = 19;
   const y = 3;
-  const z = 7;
+  const z = 5;
 
   const { position } = useSpring({
     to: async next => {
         await next({ position: frameActive ? [x, y, z] : [x, y, z] });
-        await next({ position: frameActive ? [7, y, 0] : [x, y, z] });
+        await next({ position: frameActive ? [10, y, -5] : [x, y, z] });
         await next({ position: frameActive ? [0, 0, 0] : [x, y, z] });
       },
     from: { position: frameActive ? [x, y, z] : [x, y, z] },

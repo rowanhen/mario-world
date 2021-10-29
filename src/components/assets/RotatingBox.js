@@ -5,11 +5,9 @@ import { useSpring, animated } from "@react-spring/three";
 export function RotatingBox({...props}) {
   const myMesh = React.useRef();
 
-  console.log([-10, 0, -10])
-
   const positioningVariable = props.position
-
   const boxActive = props.states.boxAsset
+  const midPoint = props.midPoint
 
   const { scale } = useSpring({
     scale: boxActive ? 1 : 1.5,
@@ -25,7 +23,7 @@ export function RotatingBox({...props}) {
   const { position } = useSpring({
     to: async next => {
         await next({ position: boxActive ? positioningVariable : positioningVariable });
-        await next({ position: boxActive ? [-5, 0, 0] : positioningVariable });
+        await next({ position: boxActive ? midPoint : positioningVariable });
         await next({ position: boxActive ? [0, 0, 0] : positioningVariable });
       },
     from: { position: boxActive ? positioningVariable : positioningVariable },
@@ -44,6 +42,7 @@ export function RotatingBox({...props}) {
       onClick={() => {
         props.setStates.setBoxAsset(!boxActive)
         props.setStates.setFrameAsset(false)
+        props.setStates.setSkillBoxAsset(false)
       }}
       ref={myMesh}
     >

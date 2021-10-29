@@ -1,70 +1,118 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default function CastleInsideModel(props) {
+export default function Model(props) {
   const group = useRef()
-  const { nodes, materials } = useGLTF('/castleinside.glb')
+  const { nodes, materials } = useGLTF('/castleinsidedoors.glb')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group>
+      <group rotation={[Math.PI, -1.55, Math.PI]} scale={[0.16, 0.13, -0.01]}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0.geometry}
+          geometry={nodes.Cube009.geometry}
+          material={materials['Material.009']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_1.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_2.geometry}
+          material={materials['Material.002']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_3.geometry}
+          material={materials['Material.003']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_4.geometry}
+          material={materials['Material.004']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_5.geometry}
+          material={materials['Material.006']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_6.geometry}
+          material={materials['Material.007']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_7.geometry}
+          material={materials['Material.008']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Cube009_8.geometry}
           material={materials['Shape.081']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_1.geometry}
+          geometry={nodes.Cube009_9.geometry}
           material={materials['Shape.083']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_2.geometry}
+          geometry={nodes.Cube009_10.geometry}
           material={materials['Shape.084']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_3.geometry}
+          geometry={nodes.Cube009_11.geometry}
           material={materials['Shape.081_3C96C6A_c.bmp']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_4.geometry}
+          geometry={nodes.Cube009_12.geometry}
           material={materials['Shape.164']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_5.geometry}
+          geometry={nodes.Cube009_13.geometry}
           material={materials['Shape.165']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_6.geometry}
+          geometry={nodes.Cube009_14.geometry}
           material={materials['Shape.181']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_7.geometry}
+          geometry={nodes.Cube009_15.geometry}
           material={materials['Shape.091']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_8.geometry}
+          geometry={nodes.Cube009_16.geometry}
           material={materials['Shape.097']}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Object_0_9.geometry}
+          geometry={nodes.Cube009_17.geometry}
           material={materials['Shape.098']}
         />
       </group>
@@ -72,5 +120,4 @@ export default function CastleInsideModel(props) {
   )
 }
 
-useGLTF.preload('/castleinside.glb')
-
+useGLTF.preload('/castleinsidedoors.glb')
