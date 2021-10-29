@@ -47,36 +47,15 @@ const Lighting = () => {
   )
 }
 
-const NavMenu = ({...props}) => {
-  const navMenu = props.menuProps.navMenu 
-  const setNavMenu = props.menuProps.setNavMenu
-
-  if (navMenu) { return (
-    <group className={"nav_links_container"}>
-        <button className={"nav_links"} onClick={() => setNavMenu(!navMenu)} >close menu</button>
-      <Link to="/" onClick={() => setNavMenu(!navMenu)}>
-        <button className={"nav_links"}>outside</button>
-      </Link>
-      <Link to="/inside" onClick={() => setNavMenu(!navMenu)}>
-        <button className={"nav_links"}>inside</button>
-      </Link>
-    </group>
-  )} else { return (
-    <group>
-      <button className={"nav_links_close"} onClick={() => setNavMenu(!navMenu)}>menu</button>
-    </group>
-  )}
-}
-
-const Scene = ({transition}) => {
+const Scene = ({transition, setLocation}) => {
   return transition(({...props }, location) => (
     <a.group {...props}>
       <Switch location={location}>
         <Route path="/">
-          <CastleOutside />
+          <CastleOutside setLocation={setLocation} />
         </Route>
         <Route path="/inside">
-          <CastleInside />
+          <CastleInside setLocation={setLocation} />
         </Route>
       </Switch>
     </a.group>
@@ -86,7 +65,7 @@ const Scene = ({transition}) => {
 
 export default function App() {
   const ref = useRef()
-  const [location] = useLocation()
+  const [location, setLocation] = useLocation()
   const [navMenu, setNavMenu] = useState(false)
 
   const mouseButtons = {
@@ -106,11 +85,10 @@ export default function App() {
 
   return (
     <>
-      <NavMenu menuProps={{navMenu, setNavMenu}} />
       <Canvas shadows dpr={[1, 2]} camera={{fov: 60}} >
         <PostEffects />
         <Suspense fallback={null}>
-          <Scene transition={transition} />
+          <Scene transition={transition} setLocation={setLocation} />
           <Lighting />
           <CameraShake maxYaw={0.02} maxPitch={0.02} maxRoll={0.02} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />
         </Suspense>

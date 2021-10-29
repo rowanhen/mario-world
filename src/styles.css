@@ -23,11 +23,19 @@ body {
   justify-content: center;
   align-items: center;
 }
+.nav_links_box {
+  width: 60%;
+  height:50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+}
 .nav_links {
   position: relative;
   text-align: center;
   margin-top: 2%;
-  background-color: red;
   border: none;
   padding: 10px 50px 10px 50px;
 }
