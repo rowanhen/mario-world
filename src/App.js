@@ -15,18 +15,18 @@ import { useTransition } from "@react-spring/core"
 RectAreaLightUniformsLib.init()
 
 
-const PostEffects = (props) => {
+const PostEffects = ({active}) => {
   return (
-    <EffectComposer>
-      <Noise opacity={0.19} />
-      <HueSaturation
-        hue={0} // hue in radians
-        saturation={0.3} // saturation in radians
-      />
-      <Pixelation
-        granularity={0} // pixel granularity
-      />
-    </EffectComposer>
+      <EffectComposer>
+        <Noise opacity={0.19} />
+        <HueSaturation
+          hue={0} // hue in radians
+          saturation={0.3} // saturation in radians
+        />
+        <Pixelation
+          granularity={2} // pixel granularity
+        />
+      </EffectComposer>
   )
 }
 
@@ -72,12 +72,12 @@ export default function App() {
     RIGHT: THREE.MOUSE.PAN
   }
 
-
+  
   // Animated shape props
   const transition = useTransition(location, {
-    from: { position: [-100, 40, -230], rotation: [1, Math.PI, 0], scale: [0, 0, 0] },
-    enter: { position: [0, 0, 0], rotation: [0, 0, 0], scale: [1, 1, 1] },
-    leave: { position: [100, 0, -100], rotation: [1, -Math.PI, 0], scale: [0, 0, 0] },
+    from: { position: [-100, 40, -230], rotation: [1, Math.PI, 0], scale: [0, 0, 0], pixels: [6] },
+    enter: { position: [0, 0, 0], rotation: [0, 0, 0], scale: [1, 1, 1], pixels: [2] },
+    leave: { position: [100, 0, -100], rotation: [1, -Math.PI, 0], scale: [0, 0, 0], pixels: [10] },
     config: { duration: 5050 },
   })
 
@@ -92,7 +92,6 @@ export default function App() {
         </Suspense>
         <OrbitControls ref={ref} makeDefault enablePan={true} enableDamping={true} panSpeed = {4.0} screenSpacePanning = {false} dampingFactor={0.05} enableZoom={false} target={[0,0,0.01]} keyPanSpeed = {1.0} mouseButtons={mouseButtons} />
       </Canvas>
-      {/* {console.log(ref.current.object.setViewOffset)} */}
     </>
   )
 }
