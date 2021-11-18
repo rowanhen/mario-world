@@ -7,13 +7,13 @@ import WaterTexture from '../textures/water-texture.png'
 class WaveyMaterial extends THREE.ShaderMaterial {
   constructor() {
     const textureLoader = new THREE.TextureLoader()
-    const flagTexture = textureLoader.load(WaterTexture)
+    const watertexture = textureLoader.load(WaterTexture)
     super({
       uniforms: {
         time: { value: 0 },
         uFrequency: { value: new THREE.Vector2(100, 5) }, //edit X value to increase/descrease no. of waves
         uColor: { value: new THREE.Color('orange') },
-        uTexture: { value: flagTexture },
+        uTexture: { value: watertexture },
       },
       vertexShader: glsl`
       uniform vec2 uFrequency;
