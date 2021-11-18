@@ -46,8 +46,9 @@ export function RotatingBox({...props}) {
       }}
       ref={myMesh}
     >
+      {console.log(scale)}
       <boxBufferGeometry />
-      <meshPhongMaterial color="royalblue" />
+      <meshPhongMaterial dithering={true} color="royalblue" />
     </animated.mesh>
   );
 }

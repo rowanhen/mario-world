@@ -4,18 +4,16 @@ import guid from 'short-uuid'
 import glsl from 'babel-plugin-glsl/macro'
 import WaterTexture from '../textures/water-texture.png'
 
-
-// This shader is from Bruno Simons Threejs-Journey: https://threejs-journey.xyz
 class WaveyMaterial extends THREE.ShaderMaterial {
   constructor() {
     const textureLoader = new THREE.TextureLoader()
-    const flagTexture = textureLoader.load(WaterTexture)
+    const watertexture = textureLoader.load(WaterTexture)
     super({
       uniforms: {
         time: { value: 0 },
-        uFrequency: { value: new THREE.Vector2(30, 5) },
+        uFrequency: { value: new THREE.Vector2(100, 5) }, //edit X value to increase/descrease no. of waves
         uColor: { value: new THREE.Color('orange') },
-        uTexture: { value: flagTexture },
+        uTexture: { value: watertexture },
       },
       vertexShader: glsl`
       uniform vec2 uFrequency;
@@ -51,12 +49,10 @@ class WaveyMaterial extends THREE.ShaderMaterial {
       {
           vec2 st = vUv;
           vec3 color = vec3(1.0);
-          st *= 70.0;      // Scale up the space by 3
-          st = fract(st); // Wrap around 1.0
-      
-          // Now we have 9 spaces that go from 0-1
-      
-          color = vec3(st,0.0);
+          st *= 60.0;      // Number of tiles
+          st = fract(st);
+            
+          color = vec3(st,0.5);
           vec4 textureColor = texture2D(uTexture, st);
           // gl_FragColor = textureColor;
           // vec4 textureColor = texture2D(uTexture, vUv);
