@@ -49,8 +49,8 @@ class WaveyMaterial extends THREE.ShaderMaterial {
       {
           vec2 st = vUv;
           vec3 color = vec3(1.0);
-          st *= 60.0;      // Scale up the space by 3
-          st = fract(st); // Wrap around 1.0
+          st *= 60.0;      // Number of tiles
+          st = fract(st);
             
           color = vec3(st,0.5);
           vec4 textureColor = texture2D(uTexture, st);
