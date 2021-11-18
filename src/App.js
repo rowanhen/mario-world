@@ -90,7 +90,7 @@ export default function App() {
           <Lighting />
           <CameraShake maxYaw={0.02} maxPitch={0.02} maxRoll={0.02} yawFrequency={0.5} pitchFrequency={0.5} rollFrequency={0.4} />
         </Suspense>
-        <OrbitControls ref={ref} makeDefault enablePan={true} enableDamping={true} panSpeed = {4.0} screenSpacePanning = {false} dampingFactor={0.05} enableZoom={false} target={[0,0,0.01]} keyPanSpeed = {1.0} mouseButtons={mouseButtons} />
+        <OrbitControls ref={ref} makeDefault enablePan={false} enableDamping={true} panSpeed = {4.0} screenSpacePanning = {false} dampingFactor={0.05} enableZoom={false} target={[0,0,0.01]} keyPanSpeed = {1.0} mouseButtons={mouseButtons} />
       </Canvas>
     </>
   )
